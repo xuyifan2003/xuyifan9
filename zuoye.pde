@@ -1,5 +1,6 @@
+
 import processing.pdf.*;
-String[] imgNames={"花.png","星空.png","树.png","交大.png"};
+String[] imgNames={"花.png","星空.png","树.png","门.png"};
 int imgIndex=0;
 
 
@@ -17,6 +18,7 @@ void initiate(){
    imgIndex += 1;
   if (imgIndex >= imgNames.length) {
     imgIndex = 0;
+   
   }
 }
 
@@ -24,40 +26,6 @@ void initiate(){
 
 
 
-//void paintStroke(float strokeLength, color strokeColor, int strokeThickness) {
-//  float stepLength = strokeLength/4.0;
-  
-//  // Determines if the stroke is curved. A straight line is 0.
-//  float tan1 = 0;
-//  float tan2 = 0;
-  
-//  float odds = random(1.0);
-  
-//  if (odds < 0.7) {
-//    tan1 = random(-strokeLength, strokeLength);
-//    tan2 = random(-strokeLength, strokeLength);
-//  } 
-  
-//  // Draw a big stroke
-//  noFill();
-//  stroke(strokeColor);
-//  strokeWeight(strokeThickness);
-//  curve(tan1, -stepLength*2, 0, -stepLength, 0, stepLength, tan2, stepLength*2);
-  
-//  int z = 1;
-  
-//  // Draw stroke's details
-//  for (int num = strokeThickness; num > 0; num --) {
-//    float offset = random(-50, 25);
-//    color newColor = color(red(strokeColor)+offset, green(strokeColor)+offset, blue(strokeColor)+offset, random(100, 255));
-    
-//    stroke(newColor);
-//    strokeWeight((int)random(0, 3));
-//    curve(tan1, -stepLength*2, z-strokeThickness/2, -stepLength*random(0.9, 1.1), z-strokeThickness/2, stepLength*random(0.9, 1.1), tan2, stepLength*2);
-    
-//    z += 1;
-//  }
-//}
 
 void nextImage() {
   background(0);
@@ -77,7 +45,7 @@ void nextImage() {
 
 void draw(){
   
-  if(mousePressed){
+  if(mousePressed&&mouseY>20){
   
   
   mouseReleased();
@@ -116,7 +84,7 @@ void draw(){
   }
    
  
-drawrect();
+//drawrect();
 
 
 
@@ -142,13 +110,10 @@ drawrect();
    if(key=='c'){
         nextImage();
       }
-    if(key=='e'){
-      noLoop();
+   
+    if(key=='r'){
+      initiate();
     }
-    if(key=='b'){
-      loop();
-    }
-    
     if (key=='p'){
       if (savePDF==true){
         savePDF=false;
@@ -156,7 +121,12 @@ drawrect();
       else{
         savePDF=true;
       }
-      
+      if(key=='e'){
+      noLoop();
+    }
+    if(key=='b'){
+      loop();
+    }  
     
       
   }
@@ -166,25 +136,25 @@ drawrect();
   
 
 
-void drawrect(){
-   noStroke();
-  fill(124,203,255);
-  rect(0,0,20,20);
+//void drawrect(){
+//   noStroke();
+//  fill(124,203,255);
+//  rect(0,0,20,20);
   
-  fill(255,124,124);
-  rect(20,0,20,20);
+//  fill(255,124,124);
+//  rect(20,0,20,20);
   
-  fill(124,255,133);
-  rect(40,0,20,20);
+//  fill(124,255,133);
+//  rect(40,0,20,20);
   
-  fill(255,255,124);
-  rect(60,0,20,20);
+//  fill(255,255,124);
+//  rect(60,0,20,20);
   
-  fill(255);
-  stroke(0);
-  rect(80,0,20,20);
-  noStroke();
-}
+//  fill(255);
+//  stroke(0);
+//  rect(80,0,20,20);
+//  noStroke();
+//}
 
 
 void paintStroke(float strokeLength, color strokeColor, int strokeThickness) {
@@ -267,10 +237,10 @@ void mouseReleased(){
   
    }
   
-  if (frameCount > 600000) {
-    frameCount=0;
-    loop();
-    mouseReleased();
+  //if (frameCount > 600000) {
+  //  initiate();
+  //  loop();
+  //  mouseReleased();
 
-  }
+//  }
 }
